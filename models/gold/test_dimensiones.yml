@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_time
+    columns:
+      - name: datetime_id
+        tests: [not_null, unique]
+      - name: datetime
+        tests: [not_null]
+
+  - name: dim_location
+    columns:
+      - name: location_id
+        tests: [not_null, unique]
+      - name: latitude
+        tests: [not_null]
+      - name: longitude
+        tests: [not_null]

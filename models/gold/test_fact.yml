@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: fact_uber_trips
+    description: "Tabla de hechos de viajes Uber enriquecida con claves foráneas a dimensiones tiempo y localización"
+    columns:
+      - name: trip_id
+        tests: [unique, not_null]
+
+      - name: vendor_id
+        tests: [not_null]
+
+      - name: passenger_count
+        tests: [not_null]
+
+      - name: trip_distance
+        tests:
+          - is_positive    
+
+      - name: fare_amount
+        tests:
+          - is_positive    
+
+      - name: tip_amount
+        tests: [not_null]
+
+      - name: total_amount
+        tests: [not_null]
+
+      - name: trip_duration_minutes
+        tests:
+          - is_positive    
+
+      - name: payment_type_id
+        tests: [not_null]
+
+      - name: rate_code_id
+        tests: [not_null]
+
+      - name: pickup_datetime_id
+        tests: [not_null]
+
+      - name: dropoff_datetime_id
+        tests: [not_null]
+
+      - name: pickup_location_id
+        tests: [not_null]
+
+      - name: dropoff_location_id
+        tests: [not_null]
+
+      - name: vendor_id
+        tests:
+          - relationships:
+              to: ref('dim_vendor')
+              field: vendor_id
+      - name: rate_code_id
+        tests:
+          - relationships:
+              to: ref('dim_rate_code')
+              field: rate_code_id
+      - name: payment_type_id
+        tests:
+          - relationships:
+              to: ref('dim_payment_type')
+              field: payment_type_id

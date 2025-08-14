@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: silver_uber_trips
+    description: "Modelo Silver limpio de viajes de Uber con duración calculada."
+    columns:
+      - name: pickup_ts
+        description: "Timestamp de inicio del viaje."
+        tests:
+          - not_null
+
+      - name: dropoff_ts
+        description: "Timestamp de fin del viaje."
+        tests:
+          - not_null
+
+      - name: trip_duration_minutes
+        description: "Duración del viaje en minutos."
+        tests:
+          - not_null
+          
+      - name: pickup_latitude
+        description: "Latitud de origen del viaje"
+        tests:
+          - not_null
+
+      - name: pickup_longitude
+        description: "Longitud de origen del viaje"
+        tests:
+          - not_null
+
+      - name: dropoff_latitude
+        description: "Latitud de destino del viaje"
+        tests:
+          - not_null
+
+      - name: dropoff_longitude
+        description: "Longitud de destino del viaje"
+        tests:
+          - not_null
